@@ -23,6 +23,10 @@
  ## Add requirements
  
     pip install requirements.txt
+ ## Add API-KEY in file .env
+    API_KEY_WEATHER = ###
+    API_KEY_GEOCODER = ###
+    SECRET_KEY_FLASK = ###
     
 ## Run program
     

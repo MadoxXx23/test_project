@@ -1,3 +1,4 @@
+import os
 from asyncio.log import logger
 from openpyxl import Workbook
 from loguru import logger
@@ -35,6 +36,8 @@ def save_weather_in_exel(weather: dict[dict], city: str):
         sheet.cell(row=row, column=19).value = day.get('condition').get('condition_night')
         row+=1
     filename = f"weather_in_city_{city}_on_7_days.xlsx"
+    if os.path.isdir('excel_docs') == False:
+        os.mkdir("excel_docs")
     wb.save(f'excel_docs/{filename}')
     logger.info('save_in_excel')
 

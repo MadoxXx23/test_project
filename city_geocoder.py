@@ -1,9 +1,10 @@
 import os
 from loguru import logger
 import geocoder
+import config
 from validation import Coordinates
 
-if os.environ.get("API_KEY_GEOCODER") == None:
+if not os.environ.get("API_KEY_GEOCODER"):
     logger.debug("API_KEY_GEOCODER not found")
     exit()
     
@@ -19,10 +20,13 @@ def get_coordinates(city: str) -> Coordinates:
 
     if str(coordinates).startswith('<[ERROR - No results found]'):
         logger.debug("City not found")
-        return False
-        
+        return False, None
+           
     latitude, longitude = coordinates.geojson.get('features')[0].get('geometry').get('coordinates')
-    return Coordinates(latitude=latitude, longitude=longitude)
+    city = coordinates.geojson.get('features')[0].get('properties').get('raw').get('name')
+
+    return Coordinates(latitude=latitude, longitude=longitude), city
+
 
 
 

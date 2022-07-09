@@ -3,6 +3,7 @@ from asyncio.log import logger
 from openpyxl import Workbook
 from loguru import logger
 def save_weather_in_exel(weather: dict[dict], city: str):
+    """write data weather in excel file"""
     wb = Workbook()
     sheet = wb.active
     sheet.title = "Weather"

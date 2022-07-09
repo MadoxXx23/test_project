@@ -4,7 +4,7 @@ from database_sqllite3 import db
 
 def save_weather_in_db(data_weather):
     db.create_all()
-    if data_weather is None:
+    if not data_weather:
         status_weather = StatusWeather(status_request='Ошибка')
         db.session.add(status_weather)
         db.session.commit()

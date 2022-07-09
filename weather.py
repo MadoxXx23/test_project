@@ -19,4 +19,3 @@ def main(city_name: str):
     finally:    
         save_weather_in_db(weather)
         return city_name_eng
-

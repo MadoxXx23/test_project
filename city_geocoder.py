@@ -22,7 +22,7 @@ def get_coordinates(city: str) -> Coordinates:
         logger.debug("City not found")
         return False, None
            
-    latitude, longitude = coordinates.geojson.get('features')[0].get('geometry').get('coordinates')
+    longitude, latitude= coordinates.geojson.get('features')[0].get('geometry').get('coordinates')
     city = coordinates.geojson.get('features')[0].get('properties').get('raw').get('name')
 
     return Coordinates(latitude=latitude, longitude=longitude), city
